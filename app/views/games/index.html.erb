@@ -1,0 +1,4 @@
+<h1>Games Page</h1>
+<% current_user.games.each do |game| %>
+<h2><a href="/games/<%= game.id %>/rooms/<%= game.room_id %>">Room: <%= game.room_id %> | Game: <%= game.id %></h2></a>
+<% end %>

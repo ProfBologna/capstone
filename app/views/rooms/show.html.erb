@@ -1,0 +1,13 @@
+<h1>Room <%= @room.id %></h1>
+
+<h2>Puzzles</h2>
+<% @room.puzzles.each do |puzzle| %>
+  <h3><%= puzzle.question %></h3>
+  <%= form_tag "/games/#{@game.id}/puzzles/#{puzzle.id}/answer", method: :post do %>
+    <input type="hidden" name="room_id" value="<%= @room.id %>">
+    <%= hidden_field_tag :room_id, nil, value: @room.id %>
+    <%= hidden_field_tag :game_id, nil, value: @game.id %>
+    <%= text_field_tag :user_prompt %>
+    <%= submit_tag :submit %>
+  <% end %>
+<% end %>
