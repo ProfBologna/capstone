@@ -1,4 +1,4 @@
-class PuzzlesController < ApplicationController
+  class PuzzlesController < ApplicationController
 
   def new
     @puzzle = Puzzle.new
@@ -17,12 +17,22 @@ class PuzzlesController < ApplicationController
   end
   
 
-  def check
+  # def check
+  #   puzzle = Puzzle.find_by(prompt: params[:user_prompt].downcase, room_id: params[:room_id])
+  #   if puzzle
+  #     redirect_to "/games/#{ game.id }/puzzles/#{ puzzle.id }"
+  #   else
+  #     redirect_to "/games/#{ games.id}/rooms/#{params[:room_id]}"
+  #   end
+  # end
+
+  def prompt
     puzzle = Puzzle.find_by(prompt: params[:user_prompt].downcase, room_id: params[:room_id])
     if puzzle
-      redirect_to "/games/#{ game.id }/puzzles/#{ puzzle.id }"
+      redirect_to "/games/#{ current_user.current_game }/puzzles/#{ puzzle.id }/prompt"
     else
-      redirect_to "/games/#{ games.id}/rooms/#{params[:room_id]}"
+      redirect_to "/games/#{ current_user.current_game }/rooms/#{params[:room_id]}"
+      flash[:dangerous] = "That's not possible. Try something else."
     end
   end
 
@@ -34,7 +44,7 @@ class PuzzlesController < ApplicationController
     @game = Game.find(params[:game_id])
     @puzzle = Puzzle.find(params[:id])
     @room = Room.find(@puzzle.room_id)
-
+    
     if @puzzle.answer == params[:user_prompt]
       solve_marker = SolveMarker.new(
                                     user_id: current_user.id,

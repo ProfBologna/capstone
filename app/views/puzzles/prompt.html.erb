@@ -1,0 +1,8 @@
+<h1>Room <%= @puzzle.room.id %></h1>
+
+<h3>Question: <%= @puzzle.question %></h3>
+
+<%= form_tag "/games/#{ current_user.current_game }/puzzles/#{ @puzzle.id }/answer", method: :post do %>
+  <input type="text" name="user_prompt">  
+  <input type="submit" value="Go">
+<% end %>

@@ -1,12 +1,14 @@
 <h1>Room <%= @puzzle.room.id %></h1>
 
-<h2><%= @puzzle.room.description %></h2>
-
-<h2><%= @puzzle.question %></h2>
-<h2><%= @hint %></h2>
+<h3>Question: <%= @puzzle.question %></h3>
+<h3>Hint: <%= @hint %></h3>
 
 <%= form_tag "/games/#{params[:game_id]}/puzzles/#{ @puzzle.id }/answer", method: :post do %>
   <input type="text" name="user_prompt">
   <input type="submit" value="Go">
 <% end %>
 
+<%= form_tag "/games/#{params[:game_id]}/puzzles/#{ @puzzle.id }/answer", method: :post do %>
+    <%= text_field_tag :user_prompt %>
+  <%= submit_tag :submit %>
+<% end %>

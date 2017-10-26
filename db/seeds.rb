@@ -80,3 +80,38 @@ puzzle = Puzzle.new(
                     )
 puzzle.save
 
+
+
+
+
+
+
+
+
+puzzle = Puzzle.new(
+                    room_id: 4,
+                    prompt: "check PAGE 2",
+                    question: "How many Platonic solids exist?",
+                    answer: "5",
+                    hint: "The answer to puzzle 1, -1."
+                    )
+puzzle.save
+
+
+
+room = Room.new(
+               description: "You see a door with a key hole. Find the key, open the door!"
+               )
+room.save
+
+puzzle = Puzzle.new(
+                    room_id: 5,
+                    prompt: "check table",
+                    question: "",
+                    answer: )
+puzzle.save
+
+item = Item.new(
+               name: "Brass Key",
+               puzzle_id: ####,
+               room_id: 5)

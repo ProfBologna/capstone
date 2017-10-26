@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171008192334) do
+ActiveRecord::Schema.define(version: 20171026010026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,24 @@ ActiveRecord::Schema.define(version: 20171008192334) do
     t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "item_statuses", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "item_id"
+    t.boolean "held"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "activate"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.integer "puzzle_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "description"
   end
 
   create_table "puzzles", force: :cascade do |t|
@@ -54,6 +72,7 @@ ActiveRecord::Schema.define(version: 20171008192334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password"
+    t.integer "current_game"
   end
 
 end

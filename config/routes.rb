@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+  Rails.application.routes.draw do
 
   get '/' => 'rooms#index'
   get '/games/:game_id/rooms' => 'rooms#index'
@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/games/:game_id/puzzles/:id' => 'puzzles#show'
   post '/games/:game_id/puzzles/check' => 'puzzles#check'
   post 'games/:game_id/puzzles/:id/answer' => 'puzzles#answer'
+  post 'games/:game_id/puzzles/:id/prompt' => 'puzzles#prompt'
+
 
   get '/games' => 'games#index'
   post '/games' => 'games#create'

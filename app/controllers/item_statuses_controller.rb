@@ -1,0 +1,4 @@
+class ItemStatusesController < ApplicationController
+
+  
+end
